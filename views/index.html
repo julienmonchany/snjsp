@@ -1,0 +1,25 @@
+<% include header.html %>
+<div class="grid">
+	<div class="grid2">
+		<div class="files">
+			<h2>Files</h2>
+			<ul class="filelist">
+			<% for(var i=0;i<playlist.length;i++){ %>
+				<li><button value="<%= playlist[i] %>"><%= playlist[i] %></button></li>
+			<% } %>
+			</ul>
+		</div>
+		<div class="playlist">
+			<h2>Playlist</h2>
+			<ul class="playing"></ul>
+
+			<div id="jquery_jplayer"></div>
+			
+			<audio id="player" controls autobuffer>
+				Your browser does not support HTML5 audio. What a shame.
+			</audio>
+		    <a class="playback" href="#">Next</a>
+		</div>
+	</div>
+</div>
+<% include footer.html %>
