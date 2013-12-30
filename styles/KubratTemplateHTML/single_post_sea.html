@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html lang="en" class="ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><html lang="en"><![endif]-->
+<!--[if !IE]><html lang="en-US"><![endif]-->
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="author" content="Nikolay Nedkov Kolev" />
+	<meta
+	  name="viewport"
+	  content="
+	    width=device-width,
+	    initial-scale=1,
+	    minimum-scale=1,
+	    maximum-scale=1
+	  "
+	/>
+	
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Link to GoogleFonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin' rel='stylesheet' type='text/css'>
+	<!-- End Link to GoogleFonts -->
+	
+	<!-- Glyphs Font : FontAwesome -->
+	<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="resources/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	<!-- End Glyphs Font : FontAwesome -->
+	
+	<!-- General CSS -->
+	<link href="resources/css/reset-min.css" type="text/css" rel="stylesheet">
+	<link href="resources/css/unsemantic-grid-responsive.css" type="text/css" rel="stylesheet">
+	<!-- End General CSS -->
+	
+	<!-- Components.css -->
+	<link href="resources/css/components.css" type="text/css" rel="stylesheet">
+	<!-- End Components.css -->
+	<!-- Style -->
+	<link href="resources/css/style.css" type="text/css" rel="stylesheet">
+	<!-- End Style -->
+	
+
+	
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<!-- End jQuery -->
+	
+	<!-- Scroll to JS -->
+	<script type="text/javascript" src="resources/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<!-- End Scroll to JS -->
+	
+	<!-- Placeholders JS for IE -->
+	<script src="resources/js/jquery.placeholder.min.js"></script>
+	<!-- End Placeholders JS for IE -->
+	
+	<!-- Swipe -->
+	<script src='resources/js/swipe.js'></script>
+	<!-- End Swipe -->
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('#menu-button').toggle(function() {
+			$('#menu').animate({
+				marginTop: '+=10',
+				height: '100%',
+				opacity: 1
+			}, 300, function() {
+				// Animation complete.
+			});
+		}, function() {
+			$('#menu').animate({
+				marginTop: '-=10',
+				opacity: 0,
+				height: '0px'
+			}, 300, function() {
+				// Animation complete.
+			});
+		});
+		
+	});
+	</script>
+</head>
+<body>
+
+<!-- Top menu/logo wrapper -->
+<div id="top-wrapper" class="darkblue">
+	<div class="grid-container">
+		<header class="grid-20 mobile-grid-100">
+			<p id="logo">Kubrat</p>
+			<p id="menu-button" class="hide-on-desktop"><i class="icon-reorder"></i></p>
+		</header>
+			    
+		<nav class="grid-80 mobile-grid-100">
+			<ul id="menu">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="components.html">Components</a></li>
+				<li><a href="type.html">Type & Grid</a></li>
+				<li><a href="charts.html">Charts</a></li>
+				<li><a href="blog.html">Blog</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+<!-- End Top menu/logo wrapper -->
+
+<section>
+
+<div class="colored-stripe white">
+<div id='mySwipe' style='max-width:1920px; margin:0 auto;' class='swipe'>
+	<!-- Swipe Wrap -->
+	<div class='swipe-wrap'>
+		<!-- Slide 1 -->
+		<div class="slide" id="slide-1">
+			<div class="grid-container">
+				
+				<!-- Presentation Container -->
+				<div class="grid-40">
+					<div class="post-presentation">
+						<h2 class="post-presentation-title">The music of the sea waves</h2>
+						<p class="post-presentation-text">A great photo that made me think that i would like to be on the seaside now!</p>
+					</div>
+				</div>
+				<!-- End Presentation Container -->
+			</div>
+		</div>
+		<!-- End Slide 1 -->
+	</div>
+	<!-- End Swipe Wrap -->
+</div>
+</div>
+<div class="arrow-up-white"></div>
+
+<!-- Posts -->
+<div class="colored-stripe white">
+	
+	<div class="grid-container">
+		<!-- Post 1 -->
+		<div class="grid-100 mobile-grid-100 single-post-container">
+			
+			<!-- Post Paragraphs -->
+			<div class="grid-60 push-20">
+				<div class="grid-100 grid-parent">
+					<div class="grid-15 grid-parent mobile-grid-20">
+						<p class="post-date greensea"><span class="post-day">01</span><span class="post-month">Jul</span></p>
+					</div>
+					<div class="grid-80 mobile-grid-80">
+						<h3 class="post-title">Man Fishing</h3>
+						<p class="post-author"><span class="post-by">by</span> Yoni Kaplan-Nadel <span class="post-by">on</span> Unspash</p>
+					</div>
+				</div>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam nulla a quam porttitor, non faucibus velit mollis. Praesent vitae ipsum feugiat, fermentum nibh sed, accumsan lectus. Fusce tempus odio eu velit vestibulum, at euismod magna tempor. Vivamus non ante viverra, luctus mi ac.</p>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam nulla a quam porttitor, non faucibus velit mollis. Praesent vitae ipsum feugiat, fermentum nibh sed, accumsan lectus. Fusce tempus odio eu velit vestibulum, at euismod magna tempor. Vivamus non ante viverra, luctus mi ac.</p>
+				<h3>Just another title</h3>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam nulla a quam porttitor, non faucibus velit mollis. Praesent vitae ipsum feugiat, fermentum nibh sed, accumsan lectus. Fusce tempus odio eu velit vestibulum, at euismod magna tempor. Vivamus non ante viverra, luctus mi ac.</p>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam nulla a quam porttitor, non faucibus velit mollis. Praesent vitae ipsum feugiat, fermentum nibh sed, accumsan lectus. Fusce tempus odio eu velit vestibulum, at euismod magna tempor. Vivamus non ante viverra, luctus mi ac.</p>
+				<h3>Yet another title</h3>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam nulla a quam porttitor, non faucibus velit mollis. Praesent vitae ipsum feugiat, fermentum nibh sed, accumsan lectus. Fusce tempus odio eu velit vestibulum, at euismod magna tempor. Vivamus non ante viverra, luctus mi ac.</p>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam nulla a quam porttitor, non faucibus velit mollis. Praesent vitae ipsum feugiat, fermentum nibh sed, accumsan lectus. Fusce tempus odio eu velit vestibulum, at euismod magna tempor. Vivamus non ante viverra, luctus mi ac.</p>
+			</div>
+			<!-- End Post Paragraphs -->
+			
+			<!-- Share Buttons -->
+			<div class="grid-60 grid-parent push-20">
+				<div class="grid-20">
+					<p class="button facebook">Facebook</p>
+				</div>
+				<div class="grid-20">
+					<p class="button twitter">Twitter</p>
+				</div>
+				<div class="grid-20">
+					<p class="button dribbble">Dribbble</p>
+				</div>
+			</div>
+			<!-- End Share Buttons -->
+			
+		</div>
+		<!-- End Post 1 -->
+		
+	</div>
+</div>
+<!-- End Posts -->
+
+</section>
+    
+<footer>
+</footer>
+
+<script>
+// pure JS
+var elem = document.getElementById('mySwipe');
+window.mySwipe = Swipe(elem, {
+  // startSlide: 0,
+  	 speed: 600,
+     auto: 4500,
+     continuous: true,
+     disableScroll: false,
+  // stopPropagation: true,
+  // callback: function(index, element) {},
+  // transitionEnd: function(index, element) {}
+});
+
+// with jQuery
+// window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
+</script> 
+</body>
+</html>
