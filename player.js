@@ -6,7 +6,7 @@ var id3 = require('id3js');
 var fs = require('fs');
 var path = require('path');
 
-var musicdir = "/home/pi/music";
+var musicdir = "/home/jumon/music";
 
 var walk = function(dir, done) {
   var results = [];

@@ -1,25 +1,48 @@
 <% include header.html %>
-<div class="grid">
-	<div class="grid2">
-		<div class="files">
-			<h2>Files</h2>
-			<ul class="filelist">
-			<% for(var i=0;i<playlist.length;i++){ %>
-				<li><button value="<%= playlist[i] %>"><%= playlist[i] %></button></li>
-			<% } %>
-			</ul>
-		</div>
-		<div class="playlist">
-			<h2>Playlist</h2>
-			<ul class="playing"></ul>
 
-			<div id="jquery_jplayer"></div>
+<div class="colored-stripe turquoise">
+
+			<div class="grid-container">
+				<!-- Icon Container -->
+				<div class="grid-100">
+					<audio id="player" controls autobuffer>
+					Your browser does not support HTML5 audio. What a shame.
+					</audio>
+				</div>
+
+			</div>
+
+</div>
+
+
+<!-- 2 Columns -->
+<div class="colored-stripe white">
+	<div class="grid-container">
+		<div class="grid-100 grid-parent">
+
+			<!-- Columns Container -->
+			<div class="grid-50">
+				<div class="library ">
+					<h3>Library</h3>
+					<ul class="library">
+					<% for(var i=1;i<playlist.length;i++){ %>
+						<li style="list-style-type:none"><p class="tag grid-100 tag-belizehole" value="<%= playlist[i] %>"><%= playlist[i] %></p></li>
+					<% } %>
+					</ul>
+				</div>
+			</div>
+			<!-- End Columns Container -->
 			
-			<audio id="player" controls autobuffer>
-				Your browser does not support HTML5 audio. What a shame.
-			</audio>
-		    <a class="playback" href="#">Next</a>
+			<!-- Column Container -->
+			<div class="grid-50">
+				<div class="playlist">
+					<h2>Playlist</h2>
+					<ul class="playlist"></ul>
+				</div>
+			</div>
+			<!-- End Columns Container -->
 		</div>
 	</div>
 </div>
+<!-- End 2 Columns -->
 <% include footer.html %>
