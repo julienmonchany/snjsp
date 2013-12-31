@@ -1,25 +1,120 @@
-<!doctype html>
-	<!--[if lte IE 7]> <html class="no-js ie67 ie678" lang="fr"> <![endif]-->
-	<!--[if IE 8]> <html class="no-js ie8 ie678" lang="fr"> <![endif]-->
-	<!--[if IE 9]> <html class="no-js ie9" lang="fr"> <![endif]-->
-	<!--[if gt IE 9]> <!--><html class="no-js" lang="fr"> <!--<![endif]-->
-	<head>
-			<meta charset="ISO-8859-1">
-			<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
-			<title>SNJSP</title>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<!--[if lt IE 9]>
-			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<![endif]-->
-			<script src="js/jquery-1.10.2.min.js"></script>
-			<script src="js/script.js"></script>
-			<link rel="stylesheet" href="styles/knacss.css" media="all">
-			<link rel="stylesheet" href="styles/styles.css" media="all">
-	</head>
-<body>
-	<div class="header">
-		<h1><span class="icon icon-asteri"></span>S.NJS.P <span class="smaller">Simple NodeJS Player</span></h1>
+<!DOCTYPE html>
+<!--[if IE 7]><html lang="en" class="ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><html lang="en"><![endif]-->
+<!--[if !IE]><html lang="en-US"><![endif]-->
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta
+	  name="viewport"
+	  content="
+	    width=device-width,
+	    initial-scale=1,
+	    minimum-scale=1,
+	    maximum-scale=1
+	  "
+	/>
 		
-	</div>
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Link to GoogleFonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin' rel='stylesheet' type='text/css'>
+	<!-- End Link to GoogleFonts -->
+	
+	<!-- Glyphs Font : FontAwesome -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+	<![endif]-->
+	<!-- End Glyphs Font : FontAwesome -->
+	
+	<!-- General CSS -->
+	<link href="css/reset-min.css" type="text/css" rel="stylesheet">
+	<link href="css/unsemantic-grid-responsive.css" type="text/css" rel="stylesheet">
+	<!-- End General CSS -->
+	
+	<!-- Components.css -->
+	<link href="css/components.css" type="text/css" rel="stylesheet">
+	<!-- End Components.css -->
+	<!-- Style -->
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<!-- End Style -->
+	
 
-	<div class="container w80 center">
+	
+	<!-- jQuery -->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<!-- Scroll to JS -->
+	<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<!-- Placeholders JS for IE -->
+	<script src="js/jquery.placeholder.min.js"></script>
+	<!-- Swipe -->
+	<script src='js/swipe.js'></script>
+	
+	<script type="text/javascript">
+	// Menus animation
+	$(document).ready(function() {
+		
+		$('#menu-button').toggle(function() {
+			$('#menu').animate({
+				marginTop: '+=10',
+				height: '100%',
+				opacity: 1
+			}, 300, function() {
+				// Animation complete.
+			});
+		}, function() {
+			$('#menu').animate({
+				marginTop: '-=10',
+				opacity: 0,
+				height: '0px'
+			}, 300, function() {
+				// Animation complete.
+			});
+		});
+		
+	});
+	</script>
+</head>
+
+<body>
+
+<!-- Top menu/logo wrapper -->
+<div id="top-wrapper" class="darkblue">
+	<div class="grid-container">
+		<header class="grid-20 mobile-grid-100">
+			<p id="logo"><i class="icon-leaf"></i> SNJSP</p>
+			<p id="menu-button" class="hide-on-desktop"><i class="icon-reorder"></i></p>
+		</header>
+			    
+		<!-- <nav class="grid-80 mobile-grid-100">
+			<ul id="menu">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="components.html">Components</a></li>
+				<li><a href="type.html">Type & Grid</a></li>
+				<li><a href="charts.html">Charts</a></li>
+				<li><a href="blog.html">Blog</a></li>
+			</ul>
+		</nav> -->
+	</div>
+</div>
+<!-- End Top menu/logo wrapper -->
+
+<section>
+
+<div class="colored-stripe turquoise">
+	<div class="grid-container">
+		<div class="grid-100 grid-parent">
+			<h1>Player</h1>
+		</div>
+	</div>
+</div>
+
+<!-- Four Paragraphs -->
+<div class="colored-stripe white">
+	<div class="grid-container">
+		<div class="grid-100 grid-parent paragraphs-container">
