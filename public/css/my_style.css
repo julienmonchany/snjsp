@@ -1,0 +1,9 @@
+/* This CSS File override the whole site */
+
+.jp-duration{
+	float:right;
+}
+
+.jp-title{
+	text-align: center;
+}
