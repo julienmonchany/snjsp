@@ -46,8 +46,9 @@ var walk = function(dir, done) {
 // Express config
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
-app.use("/styles",express.static(__dirname + "/styles"));
-app.use("/js",express.static(__dirname + "/js"));
+app.use("/styles",express.static(__dirname + "/public"));
+// app.use("/styles",express.static(__dirname + "/styles"));
+// app.use("/js",express.static(__dirname + "/js"));
 app.use("/home",express.static("/home"));
 
 app.get('/', function(req, res) {
