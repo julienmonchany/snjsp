@@ -46,3 +46,11 @@
 
 	background-color: #2C3E50; /* Kurbat MidnightBlue color */
 }
+
+
+.tag-darkblue-hover {
+    background-color: #292F33;
+    border: 1px solid #292F33;
+    color: #FFFFFF;
+    text-shadow: none;
+}

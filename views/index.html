@@ -11,69 +11,37 @@
 						<div id="jquery_jplayer_1" class="jp-jplayer">
 						</div>
 						<div class="jp-gui">
-							<div class="jp-video-play">
-								<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
-							</div>
 							<div class="jp-interface">
-								<div class="jp-title">
-									<!-- <ul>
-										<li> -->
-											<h3>Artist - Track</h3>
-										<!-- </li>
-									</ul> -->
-								</div>
 								<div class=" jp-progress">
 									<div class="progress-bar jp-seek-bar">
 										<div class="progress sunflower jp-play-bar">
 										</div>
 									</div>
 								</div>
-								<span class="jp-current-time">
-								</span>
-								<span class="jp-duration">
-								</span>
-								<div class="jp-controls-holder">
-									<ul class="jp-controls">
-										<li>
-											<a href="javascript:;" class="jp-play tag tag-darkblue" tabindex="1"><i class="icon-play"></i></a>
-										</li>
-										<li>
-											<a href="javascript:;" class="jp-pause tag tag-orange" tabindex="1"><i class="icon-pause"></i></a>
-										</li>
-										<li>
-											<a href="javascript:;" class="jp-stop tag tag-pomegranate" tabindex="1"><i class="icon-stop"></i></a>
-										</li>
-										<li>
-											<a href="javascript:;" class="jp-mute tag tag-darkblue" tabindex="1" title="mute">mute</a>
-										</li>
-										<li>
-											<a href="javascript:;" class="jp-unmute tag tag-darkblue" tabindex="1" title="unmute">unmute</a>
-										</li>
-										<!-- <li>
-											<a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a>
-										</li> -->
-									</ul>
-									<ul class="jp-toggles">
-										<li>
-											<a href="javascript:;" class="jp-repeat tag tag-darkblue" tabindex="1" title="repeat"><i class="icon-repeat"></i></a>
-										</li>
-										<li>
-											<a href="javascript:;" class="jp-repeat-off tag tag-darkblue" tabindex="1" title="repeat off">repeat off</a>
-										</li>
-									</ul>
-									<div class="progress-bar jp-volume-bar">
-										<div class="progress belizehole jp-volume-bar-value"></div>
-									</div>
-									</div>								
+									<span class="jp-current-time"></span>
+									<span class="jp-duration"></span>
 							</div>
 						</div>
-						<div class="jp-no-solution">
-							<span>
-								Update Required
-							</span>
-							To play the media you will need to either update your browser to a recent version
-							or update your
-							<a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
+						<div class="jp-controls-holder">
+							<ul class="jp-controls">
+								<li><a href="javascript:;" class="jp-play tag tag-darkblue" tabindex="1"><i class="icon-play"></i></a></li>
+								<li><a href="javascript:;" class="jp-pause tag tag-orange" tabindex="1"><i class="icon-pause"></i></a></li>
+								<li><a href="javascript:;" class="jp-stop tag tag-pomegranate" tabindex="1"><i class="icon-stop"></i></a></li>
+								<li><a href="javascript:;" class="jp-previous tag tag-darkblue" tabindex="1"><i class="icon-step-backward"></i></a></li>
+								<li><a href="javascript:;" class="jp-next tag tag-darkblue" tabindex="1"><i class="icon-step-forward"></i></a></li>
+								<li><a href="javascript:;" class="jp-mute tag tag-darkblue" tabindex="1" title="mute">mute</a></li>
+								<li><a href="javascript:;" class="jp-unmute tag tag-darkblue tag-darkblue-hover" tabindex="1" title="unmute">unmute</a></li>
+								<li><a href="javascript:;" class="jp-repeat tag tag-darkblue" tabindex="1" title="repeat"><i class="icon-repeat"></i></a></li>
+								<li><a href="javascript:;" class="jp-repeat-off tag tag-darkblue tag-darkblue-hover" tabindex="1" title="repeat off">repeat off</a></li>
+								<li><a href="javascript:;" class="jp-shuffle tag tag-darkblue" tabindex="1" title="shuffle"><i class="icon-random"></i></a></li>
+								<li><a href="javascript:;" class="jp-shuffle-off tag tag-darkblue tag-darkblue-hover" tabindex="1" title="shuffle off">shuffle off</a></li>
+							</ul>
+						</div>					
+						<div class="progress-bar jp-volume-bar">
+							<div class="progress belizehole jp-volume-bar-value"></div>
+						</div>
+						<div class="jp-playlist">
+							<ul class="playlist"></ul>
 						</div>
 					</div>
 				</div>
@@ -85,17 +53,17 @@
 		<div class="grid-container">
 			<div class="grid-100 grid-parent">
 				<!-- Columns Container -->
-				<div class="grid-50">
+				<div class="grid-100">
 					<div class="library">
 						<h2>
 							Library
 						</h2>
 						<ul class="library">
-							<% for(var i=1;i<playlist.length;i++){ %>
+							<% for(var i=0;i<library.length;i++){ %>
 								<li style="list-style-type:none">
-									<p class="tag grid-100 tag-belizehole" value="<%= playlist[i] %>">
-										<%= playlist[i] %>
-									</p>
+									<button class="tag grid-100 tag-belizehole" value="<%= library[i] %>">
+										<%= library[i] %>
+									</button>
 								</li>
 								<% } %>
 						</ul>
@@ -103,14 +71,15 @@
 				</div>
 				<!-- End Columns Container -->
 				<!-- Column Container -->
-				<div class="grid-50">
-					<div class="playlist">
+<!-- 				<div class="grid-50">
+ 					<div class="playlist">
 						<h2>
 							Playlist
 						</h2>
 						<ul class="playlist"></ul>
-					</div>
-				</div>
+					</div> 
+
+				</div> -->
 				<!-- End Columns Container -->
 			</div>
 		</div>
