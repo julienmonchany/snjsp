@@ -7,3 +7,16 @@
 .jp-title{
 	text-align: center;
 }
+
+.jp-controls-holder li{
+	display: inline;
+	width:inherit;
+}
+
+.jp-controls-holder li a{
+	text-decoration: none;
+}
+
+.jp-volume-bar{
+	width:inherit;
+}
