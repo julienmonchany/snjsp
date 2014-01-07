@@ -9,7 +9,7 @@
 }
 
 .jp-controls-holder li{
-	display: inline;
+	display: inline-block;
 	width:inherit;
 }
 
@@ -17,6 +17,32 @@
 	text-decoration: none;
 }
 
+.jp-controls{
+	text-align: center;
+}
+
 .jp-volume-bar{
 	width:inherit;
+	clear: both;
+}
+
+.jp-playlist{
+	margin-top:20px;
+}
+
+.playlist li{
+	list-style-type: none;
+}
+
+.jp-playlist-item{
+	text-decoration: none;
+	display:block;
+	text-align: center;
+	color: #FFF;
+	background-color: #3498DB; /* Kurbat peterriver color */
+}
+
+.jp-playlist-current{
+
+	background-color: #2C3E50; /* Kurbat MidnightBlue color */
 }

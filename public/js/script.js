@@ -1,24 +1,4 @@
 $(document).ready(function() {
-	// $(".filelist button").click(function(){
-	// 	// Putting the file in the playlist
-	// 	$('.playing').append(
-	// 		$('<li>').append($(this))
-	// 	);
-	// 	// adding the file to the player
-	// 	$("#player").append(
-	// 		$('<source>').attr('src',$(this).attr('value')).append()
-	// 	);
-	// 	$("#player").attr('src',$(this).attr('value'));
-	// });
-	// // playing file
-	// $(".playlist button").click(function(){
-	// 	$("#player").attr('src',$(this).attr('value'));
-	// });
-	// 	$(".playback").click(function(e) {
-	//       e.preventDefault();
-	//     });
-
-
 	// MENUS ANIMATION
 	// $('#menu-button').toggle(function() {
 	// 	$('#menu').animate({
@@ -38,15 +18,29 @@ $(document).ready(function() {
 	// 	});
 	// });
 
+	// add the selected song to the playlist
+	$(".library button").click(function(){
+		myPlaylist.add({
+			title:$(this).attr('value'),
+			//artist:"Le Artist",
+			mp3: $(this).attr('value')
+		}, false); // no autoplay when adding
+	 });
 
-      $("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-            mp3: "http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3"
-          });
-        },
-        solution: "html",
-        supplied: "mp3, flac"
-      });
+	var myPlaylist = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1"
+	}, 
+	[], 
+	{
+		playlistOptions: {
+			enableRemoveControls: false,
+			addTime: 0
+		},
+			swfPath: "/js",
+			supplied: "mp3, flac",
+			smoothPlayBar: true,
+			keyEnabled: true
+	});
 
 });
