@@ -1,12 +1,34 @@
-</section>
-    <hr />
-<footer>
-	<div class="grid-container">
-		<div class="grid-100">
-			<p class="paragraph-title">Design : <a href="http://www.appixify.com/KubratTemplate/">Kubrat Template</a></p>
-		</div>
-	</div>
-</footer>
-	  
-</body>
+        </section>
+        <hr />
+        <footer>
+            <div class="grid-container">
+                <div class="grid-100">
+                    <p class="paragraph-title">Design : <a href="http://www.appixify.com/KubratTemplate/">Kubrat Template</a></p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost:8080');
+            
+            // lauching a general search on init
+            socket.emit('search', null);
+            
+            // Search request
+            $('#search').click(function () {
+                socket.emit('search', $('#lib_search').val());
+            });
+            
+            // Receiving search results, updating library and counter
+            socket.on('results', function(data) {
+                $("#library li").remove();
+                $.each(data, function(key, value){
+                    $("#library").append('<li><button class="tag grid-100 tag-belizehole song" value='+escape(value.file)+'>'+value.file+'</li>');
+                });
+                $('#nb_elem').text(data.length);
+            });
+        </script>
+        <script src='public/js/script.js'></script>
+    </body>
 </html>

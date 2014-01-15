@@ -1,5 +1,9 @@
 /* This CSS File override the whole site */
 
+#library li{
+    list-style-type: none;
+}
+
 .jp-duration{
 	float:right;
 }

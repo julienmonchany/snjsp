@@ -1,13 +1,18 @@
-var express = require('express');
-var app = express();
+//var express = require('express');
+//var app = express();
+//// Chargement de socket.io
+//var io = require('socket.io').listen(app);
 
-var mongojs = require('mongojs');
-var db = mongojs('snjsp', ['library']);
-
-var fs = require('fs');
-var path = require('path');
-
-var musicdir = "/home/jumon/music";
+var express = require('express'),
+    app = express(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server),
+    ent = require('ent'), // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
+    mongojs = require('mongojs'),
+    db = mongojs('snjsp', ['library']),
+    fs = require('fs'),
+    path = require('path'),
+    musicdir = "/home/jumon/music";
 
 var walk = function(dir, done) {
   //var results = [];
@@ -52,7 +57,6 @@ app.get('/', function(req, res) {
        console.log("Retrieving full library");
        res.render('index',{library: docs});
     });
-    
 });
 
 app.get('/scan-db', function(req, res) {
@@ -66,25 +70,21 @@ app.get('/scan-db', function(req, res) {
     });
 });
 
-/* On ajoute un élément à la todolist */
-app.post('/search', function(req, res) {
-    if (req.body.lib_search != '') {
-            console.log("Searching "+req.body.lib_search);
-            db.library.find({file: {$regex:req.body.lib_search, $options:'i'} }).toArray(function(err, docs) {
+io.sockets.on('connection', function (socket) {
+    // Quand le serveur reçoit un signal de type "message" du client    
+    socket.on('search', function (search_req) {
+        console.log('Searching for ' + search_req);
+        db.library.find({file: {$regex:search_req, $options:'i'} }).toArray(function(err, docs) {
             if(err) throw err;
             console.log(docs.length+" elements filtered");
-            res.render('index',{library: docs});
-        }); 
-    }else{
-        console.log("Empty Search...redirecting");
-        res.redirect('/');
-    }
-    
+            socket.emit('results',docs);
+        });
+    });	
 });
 
 app.use(function(req, res, next){
     res.setHeader('Content-Type', 'text/plain');
-    res.send(404, 'Not Found !');  
+    res.send(404, 'Not Found !');
 });
 
-app.listen(8080);
+server.listen(8080);

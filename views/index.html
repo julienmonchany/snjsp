@@ -54,50 +54,14 @@
         <div class="grid-100 grid-parent">
             <!-- Columns Container -->
             <div class="grid-100">
-                <h2>
-                    Library
-                    <% if(library.length > 0){ %>
-                        - <%= library.length %> elements
-                    <% } %>
-                </h2>
-                <form action="/search" method="post">
-                    <p>
-                        <label for="lib_search">Search:</label>
-                        <input type="text" name="lib_search" id="lib_search" autofocus />
-                        <input class="greensea" type="submit" />
-                    </p>
-                </form>
+                <h2>Library - <span id="nb_elem"></span> elements</h2>
                 
-
-                <div class="library">
-
-                    <ul class="library">
-                        <% if(library && (library.length > 0)){ %>
-                            <% for(var i=0;i<library.length;i++){ %>
-                                <li style="list-style-type:none">
-                                    <button class="tag grid-100 tag-belizehole" value="<%= library[i].file %>">
-                                        <%= library[i].file %>
-                                    </button>
-                                </li>
-                            <% } %>
-                        <% } else { %>
-                            <li>Empty library !</li>
-                        <% } %>
-                    </ul>
-                </div>
+                
+                <input type="text" name="lib_search" id="lib_search" autofocus />
+                <button id="search">Search</button>
+                
+                    <ul class="library" id="library"></ul>
             </div>
-            <!-- End Columns Container -->
-            <!-- Column Container -->
-            <!-- 				<div class="grid-50">
-                                                    <div class="playlist">
-                                                            <h2>
-                                                                    Playlist
-                                                            </h2>
-                                                            <ul class="playlist"></ul>
-                                                    </div> 
-            
-                                            </div> -->
-            <!-- End Columns Container -->
         </div>
     </div>
 </div>
