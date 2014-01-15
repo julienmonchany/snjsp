@@ -1,0 +1,11 @@
+{
+    "name": "SNJSP",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "~3.4.8",
+        "ejs": "~0.8.5",
+        "mongojs": "~0.9.11"
+    },
+    "author": "Julien Monchany <julien.monchany@gmail.com>",
+    "description": "Simple NodeJS [music] Player"
+}

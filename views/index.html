@@ -54,13 +54,25 @@
         <div class="grid-100 grid-parent">
             <!-- Columns Container -->
             <div class="grid-100">
-                <div class="library">
-                    <h2>Library</h2>
+                <h2>
+                    Library
                     <% if(library.length > 0){ %>
-                    <h4><%= library.length %> elements in the library</h4>
+                        - <%= library.length %> elements
                     <% } %>
+                </h2>
+                <form action="/search" method="post">
+                    <p>
+                        <label for="lib_search">Search:</label>
+                        <input type="text" name="lib_search" id="lib_search" autofocus />
+                        <input class="greensea" type="submit" />
+                    </p>
+                </form>
+                
+
+                <div class="library">
+
                     <ul class="library">
-                        <% if(library.length > 0){ %>
+                        <% if(library && (library.length > 0)){ %>
                             <% for(var i=0;i<library.length;i++){ %>
                                 <li style="list-style-type:none">
                                     <button class="tag grid-100 tag-belizehole" value="<%= library[i].file %>">
@@ -71,7 +83,6 @@
                         <% } else { %>
                             <li>Empty library !</li>
                         <% } %>
-                                
                     </ul>
                 </div>
             </div>

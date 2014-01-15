@@ -29,7 +29,7 @@ var walk = function(dir, done) {
             //results.push(file);
             results++;
             db.library.save({file:file});
-            console.log(file + " inserted");
+            //console.log(file + " inserted");
             if (!--pending) done(null, results);
         }
       });
@@ -43,12 +43,13 @@ app.set('view engine', 'html');
 app.use("/public",express.static(__dirname + "/public"));
 app.use("/home",express.static("/home"));
 app.use(express.cookieParser());
+app.use(express.bodyParser());
 
 app.get('/', function(req, res) {
     // loading library from db
     db.library.find({}).toArray(function(err, docs) {
        if(err) throw err;
-       console.log(docs);
+       console.log("Retrieving full library");
        res.render('index',{library: docs});
     });
     
@@ -60,8 +61,25 @@ app.get('/scan-db', function(req, res) {
     // scanning library
     walk(musicdir, function(err, results) {
         if (err) throw err;
+        console.log('scanning...'+results+' elements retrieved');
         res.render('scan',{inserts: results});
     });
+});
+
+/* On ajoute un élément à la todolist */
+app.post('/search', function(req, res) {
+    if (req.body.lib_search != '') {
+            console.log("Searching "+req.body.lib_search);
+            db.library.find({file: {$regex:req.body.lib_search, $options:'i'} }).toArray(function(err, docs) {
+            if(err) throw err;
+            console.log(docs.length+" elements filtered");
+            res.render('index',{library: docs});
+        }); 
+    }else{
+        console.log("Empty Search...redirecting");
+        res.redirect('/');
+    }
+    
 });
 
 app.use(function(req, res, next){
