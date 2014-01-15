@@ -1,88 +1,94 @@
 <% include header.html %>
-	<div class="colored-stripe turquoise">
-		<div class="grid-container">
-			<!-- Icon Container -->
-			<div class="grid-100">
-				<!-- <audio id="player" controls autobuffer>
-					Your browser does not support HTML5 audio. What a shame.
-					</audio> -->
-				<div id="jp_container_1" class="jp-video ">
-					<div class="jp-type-single">
-						<div id="jquery_jplayer_1" class="jp-jplayer">
-						</div>
-						<div class="jp-gui">
-							<div class="jp-interface">
-								<div class=" jp-progress">
-									<div class="progress-bar jp-seek-bar">
-										<div class="progress sunflower jp-play-bar">
-										</div>
-									</div>
-								</div>
-									<span class="jp-current-time"></span>
-									<span class="jp-duration"></span>
-							</div>
-						</div>
-						<div class="jp-controls-holder">
-							<ul class="jp-controls">
-								<li><a href="javascript:;" class="jp-play tag tag-darkblue" tabindex="1"><i class="icon-play"></i></a></li>
-								<li><a href="javascript:;" class="jp-pause tag tag-orange" tabindex="1"><i class="icon-pause"></i></a></li>
-								<li><a href="javascript:;" class="jp-stop tag tag-pomegranate" tabindex="1"><i class="icon-stop"></i></a></li>
-								<li><a href="javascript:;" class="jp-previous tag tag-darkblue" tabindex="1"><i class="icon-step-backward"></i></a></li>
-								<li><a href="javascript:;" class="jp-next tag tag-darkblue" tabindex="1"><i class="icon-step-forward"></i></a></li>
-								<li><a href="javascript:;" class="jp-mute tag tag-darkblue" tabindex="1" title="mute">mute</a></li>
-								<li><a href="javascript:;" class="jp-unmute tag tag-darkblue tag-darkblue-hover" tabindex="1" title="unmute">unmute</a></li>
-								<li><a href="javascript:;" class="jp-repeat tag tag-darkblue" tabindex="1" title="repeat"><i class="icon-repeat"></i></a></li>
-								<li><a href="javascript:;" class="jp-repeat-off tag tag-darkblue tag-darkblue-hover" tabindex="1" title="repeat off">repeat off</a></li>
-								<li><a href="javascript:;" class="jp-shuffle tag tag-darkblue" tabindex="1" title="shuffle"><i class="icon-random"></i></a></li>
-								<li><a href="javascript:;" class="jp-shuffle-off tag tag-darkblue tag-darkblue-hover" tabindex="1" title="shuffle off">shuffle off</a></li>
-							</ul>
-						</div>					
-						<div class="progress-bar jp-volume-bar">
-							<div class="progress belizehole jp-volume-bar-value"></div>
-						</div>
-						<div class="jp-playlist">
-							<ul class="playlist"></ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 2 Columns -->
-	<div class="colored-stripe white">
-		<div class="grid-container">
-			<div class="grid-100 grid-parent">
-				<!-- Columns Container -->
-				<div class="grid-100">
-					<div class="library">
-						<h2>
-							Library
-						</h2>
-						<ul class="library">
-							<% for(var i=0;i<library.length;i++){ %>
-								<li style="list-style-type:none">
-									<button class="tag grid-100 tag-belizehole" value="<%= library[i] %>">
-										<%= library[i] %>
-									</button>
-								</li>
-								<% } %>
-						</ul>
-					</div>
-				</div>
-				<!-- End Columns Container -->
-				<!-- Column Container -->
-<!-- 				<div class="grid-50">
- 					<div class="playlist">
-						<h2>
-							Playlist
-						</h2>
-						<ul class="playlist"></ul>
-					</div> 
-
-				</div> -->
-				<!-- End Columns Container -->
-			</div>
-		</div>
-	</div>
-	<!-- End 2 Columns -->
-	<% include footer.html %>
+<div class="colored-stripe turquoise">
+    <div class="grid-container">
+        <!-- Icon Container -->
+        <div class="grid-100">
+            <!-- <audio id="player" controls autobuffer>
+                    Your browser does not support HTML5 audio. What a shame.
+                    </audio> -->
+            <div id="jp_container_1" class="jp-video ">
+                <div class="jp-type-single">
+                    <div id="jquery_jplayer_1" class="jp-jplayer">
+                    </div>
+                    <div class="jp-gui">
+                        <div class="jp-interface">
+                            <div class=" jp-progress">
+                                <div class="progress-bar jp-seek-bar">
+                                    <div class="progress sunflower jp-play-bar">
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="jp-current-time"></span>
+                            <span class="jp-duration"></span>
+                        </div>
+                    </div>
+                    <div class="jp-controls-holder">
+                        <ul class="jp-controls">
+                            <li><a href="javascript:;" class="jp-play tag tag-darkblue" tabindex="1"><i class="icon-play"></i></a></li>
+                            <li><a href="javascript:;" class="jp-pause tag tag-orange" tabindex="1"><i class="icon-pause"></i></a></li>
+                            <li><a href="javascript:;" class="jp-stop tag tag-pomegranate" tabindex="1"><i class="icon-stop"></i></a></li>
+                            <li><a href="javascript:;" class="jp-previous tag tag-darkblue" tabindex="1"><i class="icon-step-backward"></i></a></li>
+                            <li><a href="javascript:;" class="jp-next tag tag-darkblue" tabindex="1"><i class="icon-step-forward"></i></a></li>
+                            <li><a href="javascript:;" class="jp-mute tag tag-darkblue" tabindex="1" title="mute">mute</a></li>
+                            <li><a href="javascript:;" class="jp-unmute tag tag-darkblue tag-darkblue-hover" tabindex="1" title="unmute">unmute</a></li>
+                            <li><a href="javascript:;" class="jp-repeat tag tag-darkblue" tabindex="1" title="repeat"><i class="icon-repeat"></i></a></li>
+                            <li><a href="javascript:;" class="jp-repeat-off tag tag-darkblue tag-darkblue-hover" tabindex="1" title="repeat off">repeat off</a></li>
+                            <li><a href="javascript:;" class="jp-shuffle tag tag-darkblue" tabindex="1" title="shuffle"><i class="icon-random"></i></a></li>
+                            <li><a href="javascript:;" class="jp-shuffle-off tag tag-darkblue tag-darkblue-hover" tabindex="1" title="shuffle off">shuffle off</a></li>
+                        </ul>
+                    </div>					
+                    <div class="progress-bar jp-volume-bar">
+                        <div class="progress belizehole jp-volume-bar-value"></div>
+                    </div>
+                    <div class="jp-playlist">
+                        <ul class="playlist"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 2 Columns -->
+<div class="colored-stripe white">
+    <div class="grid-container">
+        <div class="grid-100 grid-parent">
+            <!-- Columns Container -->
+            <div class="grid-100">
+                <div class="library">
+                    <h2>Library</h2>
+                    <% if(library.length > 0){ %>
+                    <h4><%= library.length %> elements in the library</h4>
+                    <% } %>
+                    <ul class="library">
+                        <% if(library.length > 0){ %>
+                            <% for(var i=0;i<library.length;i++){ %>
+                                <li style="list-style-type:none">
+                                    <button class="tag grid-100 tag-belizehole" value="<%= library[i].file %>">
+                                        <%= library[i].file %>
+                                    </button>
+                                </li>
+                            <% } %>
+                        <% } else { %>
+                            <li>Empty library !</li>
+                        <% } %>
+                                
+                    </ul>
+                </div>
+            </div>
+            <!-- End Columns Container -->
+            <!-- Column Container -->
+            <!-- 				<div class="grid-50">
+                                                    <div class="playlist">
+                                                            <h2>
+                                                                    Playlist
+                                                            </h2>
+                                                            <ul class="playlist"></ul>
+                                                    </div> 
+            
+                                            </div> -->
+            <!-- End Columns Container -->
+        </div>
+    </div>
+</div>
+<!-- End 2 Columns -->
+<% include footer.html %>

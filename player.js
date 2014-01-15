@@ -10,7 +10,8 @@ var path = require('path');
 var musicdir = "/home/jumon/music";
 
 var walk = function(dir, done) {
-  var results = [];
+  //var results = [];
+  var results = 0;
   fs.readdir(dir, function(err, list) {
     if (err) console.log(err);
     var pending = list.length;
@@ -21,12 +22,12 @@ var walk = function(dir, done) {
       fs.stat(file, function(err, stat) {
         if (stat && stat.isDirectory()) {
           walk(file, function(err, res) {
-
-            results = results.concat(res);
+            //results = results.concat(res);
             if (!--pending) done(null, results);
           });
         } else {
-          results.push(file);
+            //results.push(file);
+            results++;
             db.library.save({file:file});
             console.log(file + " inserted");
             if (!--pending) done(null, results);
@@ -44,10 +45,22 @@ app.use("/home",express.static("/home"));
 app.use(express.cookieParser());
 
 app.get('/', function(req, res) {
-    // read content of the music directory
+    // loading library from db
+    db.library.find({}).toArray(function(err, docs) {
+       if(err) throw err;
+       console.log(docs);
+       res.render('index',{library: docs});
+    });
+    
+});
+
+app.get('/scan-db', function(req, res) {
+    // dropping existing library (to fix)
+    db.library.remove();
+    // scanning library
     walk(musicdir, function(err, results) {
         if (err) throw err;
-        res.render('index',{library: results});
+        res.render('scan',{inserts: results});
     });
 });
 
