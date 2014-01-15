@@ -1,7 +1,7 @@
 $(document).ready(function() {
+    
 	// add the selected song to the playlist
-	$("#library button").click(function(){
-            alert("test");
+        $(document.body).on('click','#library button',function(){
 		myPlaylist.add({
 			title:$(this).attr('value'),
 			//artist:"Le Artist",
@@ -16,10 +16,10 @@ $(document).ready(function() {
 	[], 
 	{
 		playlistOptions: {
-			enableRemoveControls: false,
+			enableRemoveControls: true,
 			addTime: 0
 		},
-			swfPath: "/js",
+//			swfPath: "/js",
 			supplied: "mp3, flac",
 			smoothPlayBar: true,
 			keyEnabled: true

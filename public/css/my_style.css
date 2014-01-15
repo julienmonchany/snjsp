@@ -51,6 +51,12 @@
 	background-color: #2C3E50; /* Kurbat MidnightBlue color */
 }
 
+.jp-playlist-item-remove{
+    position: absolute;
+    text-decoration: none;
+    padding: 3px 0 0 3px;
+    color:#C0392B;
+}
 
 .tag-darkblue-hover {
     background-color: #292F33;
@@ -58,3 +64,10 @@
     color: #FFFFFF;
     text-shadow: none;
 }
+
+.song {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+

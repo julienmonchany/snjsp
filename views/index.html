@@ -54,13 +54,17 @@
         <div class="grid-100 grid-parent">
             <!-- Columns Container -->
             <div class="grid-100">
+            <div class="grid-75">
+                <input type="text" placeholder="Search" name="lib_search" id="lib_search" autofocus />
+            </div>
+            <div class="grid-25">
+                <input type="submit" id="search" class="greensea" value="Search" />
+            </div>
+            </div>
+            
+            <div class="grid-100">
                 <h2>Library - <span id="nb_elem"></span> elements</h2>
-                
-                
-                <input type="text" name="lib_search" id="lib_search" autofocus />
-                <button id="search">Search</button>
-                
-                    <ul class="library" id="library"></ul>
+                <ul class="library" id="library"></ul>
             </div>
         </div>
     </div>

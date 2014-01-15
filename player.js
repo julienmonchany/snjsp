@@ -31,10 +31,8 @@ var walk = function(dir, done) {
             if (!--pending) done(null, results);
           });
         } else {
-            //results.push(file);
             results++;
             db.library.save({file:file});
-            //console.log(file + " inserted");
             if (!--pending) done(null, results);
         }
       });
