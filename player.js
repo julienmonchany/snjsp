@@ -1,8 +1,3 @@
-//var express = require('express');
-//var app = express();
-//// Chargement de socket.io
-//var io = require('socket.io').listen(app);
-
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
@@ -12,7 +7,7 @@ var express = require('express'),
     db = mongojs('snjsp', ['library']),
     fs = require('fs'),
     path = require('path'),
-    musicdir = "/home/jumon/music";
+    musicdir = "/home/pi/music";
 
 var walk = function(dir, done) {
   //var results = [];
@@ -20,7 +15,6 @@ var walk = function(dir, done) {
   fs.readdir(dir, function(err, list) {
     if (err) console.log(err);
     var pending = list.length;
-    //console.log("list length "+pending);
     if (!pending) return done(null, results);
     list.forEach(function(file) {
       file = dir + '/' + file;
@@ -41,16 +35,17 @@ var walk = function(dir, done) {
 };
 
 // Express config
+io.set('log level',1);
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 app.use("/public",express.static(__dirname + "/public"));
 app.use("/home",express.static("/home"));
-app.use(express.cookieParser());
+//app.use(express.cookieParser());
 app.use(express.bodyParser());
 
 app.get('/', function(req, res) {
     // loading library from db
-    db.library.find({}).toArray(function(err, docs) {
+    db.library.find().toArray(function(err, docs) {
        if(err) throw err;
        console.log("Retrieving full library");
        res.render('index',{library: docs});
@@ -69,10 +64,20 @@ app.get('/scan-db', function(req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-    // Quand le serveur reçoit un signal de type "message" du client    
+    // Quand le serveur reçoit un signal de type "message" du client   
+    socket.on('connection', function(){
+        console.log("A new Challenger !");
+        db.library.count(function(err, docs){
+            if(err) throw err;
+            console.log(docs +" in the library");
+            socket.emit('nb_docs',docs);
+        });
+
+    });
+    
     socket.on('search', function (search_req) {
         console.log('Searching for ' + search_req);
-        db.library.find({file: {$regex:search_req, $options:'i'} }).toArray(function(err, docs) {
+        db.library.find({file: {$regex:search_req, $options:'i'} }).limit(100).toArray(function(err, docs) {
             if(err) throw err;
             console.log(docs.length+" elements filtered");
             socket.emit('results',docs);

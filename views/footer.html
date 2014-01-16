@@ -10,14 +10,20 @@
 
         <script src="/socket.io/socket.io.js"></script>
         <script>
-            var socket = io.connect('http://localhost:8080');
+            var socket = io.connect('88.170.240.35:8080');
             
             // lauching a general search on init
-            socket.emit('search', null);
+            socket.emit('connection');
             
             // Search request
             $('#search').click(function () {
                 socket.emit('search', $('#lib_search').val());
+            });
+            
+            // displaying number of docs then launch a lib scan
+            socket.on('nb_docs',function(data){
+               $("#nb_elem_total").text(data); 
+               socket.emit('search', null);
             });
             
             // Receiving search results, updating library and counter
@@ -26,7 +32,8 @@
                 $.each(data, function(key, value){
                     $("#library").append('<li><button class="tag grid-100 tag-belizehole song" value='+escape(value.file)+'>'+value.file+'</li>');
                 });
-                $('#nb_elem').text(data.length);
+                var filtered_elem = (data.length === 100) ? "+100" : data.length;
+                $('#nb_elem_playlist').text(filtered_elem);
             });
         </script>
         <script src='public/js/script.js'></script>
