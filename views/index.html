@@ -1,11 +1,10 @@
 <% include header.html %>
+
+<!-- Player, Controls and Playlist -->
 <div class="colored-stripe turquoise">
     <div class="grid-container">
         <!-- Icon Container -->
         <div class="grid-100">
-            <!-- <audio id="player" controls autobuffer>
-                    Your browser does not support HTML5 audio. What a shame.
-                    </audio> -->
             <div id="jp_container_1" class="jp-video ">
                 <div class="jp-type-single">
                     <div id="jquery_jplayer_1" class="jp-jplayer">
@@ -48,27 +47,29 @@
         </div>
     </div>
 </div>
-<!-- 2 Columns -->
+
 <div class="colored-stripe white">
     <div class="grid-container">
         <div class="grid-100 grid-parent">
-            <!-- Columns Container -->
+            <!-- Search -->
             <div class="grid-100">
-            <div class="grid-75">
-                <input type="text" placeholder="Search" name="lib_search" id="lib_search" autofocus />
+                <div class="grid-75">
+                    <input type="text" placeholder="Search" name="lib_search" id="lib_search" autofocus />
+                </div>
+                <div class="grid-25">
+                    <input type="submit" id="search" class="greensea" value="Search" />
+                </div>
             </div>
-            <div class="grid-25">
-                <input type="submit" id="search" class="greensea" value="Search" />
-            </div>
-            </div>
-            
+
+            <!--Library-->
             <div class="grid-100">
                 <h2>Library</h2>
-                <p>Displaying <span id="nb_elem_playlist"></span> elements over <span id="nb_elem_total"></span></p>
+                <p class="scan_results">Displaying <span id="nb_elem_playlist"></span> elements over <span id="nb_elem_total"></span></p>
+                <!-- to fix : in a table -->
                 <ul class="library" id="library"></ul>
             </div>
         </div>
     </div>
 </div>
-<!-- End 2 Columns -->
+
 <% include footer.html %>

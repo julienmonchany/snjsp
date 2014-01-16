@@ -7,13 +7,20 @@
                 </div>
             </div>
         </footer>
+        
+        <!-- jQuery -->
+	<script src="public/js/jquery-1.10.2.min.js"></script>
+
+	<!-- Jplayer Script -->
+	<script src='public/js/jplayer/jquery.jplayer.min.js'></script>
+	<script src='public/js/jplayer/add-on/jplayer.playlist.min.js'></script>
 
         <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket = io.connect('88.170.240.35:8080');
             
             // lauching a general search on init
-            socket.emit('connection');
+            socket.emit('new_user');
             
             // Search request
             $('#search').click(function () {
@@ -29,8 +36,8 @@
             // Receiving search results, updating library and counter
             socket.on('results', function(data) {
                 $("#library li").remove();
-                $.each(data, function(key, value){
-                    $("#library").append('<li><button class="tag grid-100 tag-belizehole song" value='+escape(value.file)+'>'+value.file+'</li>');
+                $.each(data, function(key, song){
+                    $("#library").append('<li><button class="tag grid-100 tag-belizehole song" value='+escape(song.file)+'><small>'+song.track_no+'</small> - <strong>'+song.artist+'</strong> <em>'+song.album+'</em> -- '+song.track+'</li>');
                 });
                 var filtered_elem = (data.length === 100) ? "+100" : data.length;
                 $('#nb_elem_playlist').text(filtered_elem);

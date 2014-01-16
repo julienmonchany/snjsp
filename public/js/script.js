@@ -3,8 +3,8 @@ $(document).ready(function() {
 	// add the selected song to the playlist
         $(document.body).on('click','#library button',function(){
 		myPlaylist.add({
-			title:$(this).attr('value'),
-			//artist:"Le Artist",
+                        // To fix
+			title:$(this).text(),
 			mp3: $(this).attr('value')
 		}, false); // no autoplay when adding
 	 });
