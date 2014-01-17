@@ -69,8 +69,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/scan-db', function(req, res) {
-    // dropping existing library (to fix?)
-    db.library.remove();
     // scanning library
     walk(musicdir, function(err, results) {
         if(err) console.log(err);

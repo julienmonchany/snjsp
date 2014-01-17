@@ -21,6 +21,8 @@
             
             // lauching a general search on init
             socket.emit('new_user');
+            // launching a null search
+            socket.emit('search', null);
             
             // Search request
             $('#search').click(function () {
@@ -30,7 +32,8 @@
             // displaying number of docs then launch a lib scan
             socket.on('nb_docs',function(data){
                $("#nb_elem_total").text(data); 
-               socket.emit('search', null);
+               $(".loading").hide();
+               $(".scan_results").show();
             });
             
             // Receiving search results, updating library and counter

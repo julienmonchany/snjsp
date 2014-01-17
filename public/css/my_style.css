@@ -71,3 +71,7 @@
     padding: 0;
 }
 
+// hidding results at start
+.scan_results{
+    display: none;
+}
