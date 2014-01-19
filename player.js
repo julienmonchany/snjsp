@@ -13,11 +13,14 @@ var express = require('express'),
     musicdir = "/home/pi/music";
 
 var walk = function(dir, done) {
-  //var results = [];
   var results = 0;
   fs.readdir(dir, function(err, list) {
     if (err) console.log(err);
-    var pending = list.length;
+    try{
+        var pending = list.length;
+    }catch (e){
+        console.log(e);
+    }
     if (!pending) return done(null, results);
     list.forEach(function(file) {
       file = dir + '/' + file;
@@ -29,21 +32,30 @@ var walk = function(dir, done) {
           });
         } else {
             results++;
-            id3({ file: file, type: id3.OPEN_LOCAL }, function(err, tags) {
-                if(err) console.log(err);
-                console.log("[add] "+tags.artist+ " - "+tags.album+ "- ["+ tags.v1.track+"] "+tags.title);
-                db.library.save({
-                    year: tags.year,
-                    artist: tags.artist,
-                    album: tags.album,
-                    track_no: tags.v1.track,
-                    track: tags.title,
-                    file:file
-                });
-                if (!--pending) done(null, results);
-            });
-            
-
+            // check if scanned file is an MP3 file
+            if(file.slice(-3) === "mp3"){
+                    id3({ file: file, type: id3.OPEN_LOCAL }, function(err, tags) {
+                        if(err) console.log(err);
+                        if(typeof tags !== "undefined" && tags.artist !== null){
+                            console.log("[add] - "+tags.artist+ " - "+tags.album+ " - ["+ tags.v1.track+"] "+tags.title);
+                            db.library.save({
+                                year: tags.year,
+                                artist: tags.artist,
+                                album: tags.album,
+                                track_no: tags.v1.track,
+                                track: tags.title,
+                                file:file
+                            });
+                        }else{
+                            // Artist tag is null
+                            console.log("[ign] - "+file+" not readable tags");
+                        }
+                        if (!--pending) done(null, results);
+                    });
+            }else{
+                // file is not an MP3
+                console.log("[ign] - "+file+" ignored.");
+            }
         }
       });
     });
@@ -69,12 +81,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/scan-db', function(req, res) {
+    res.render('scan');
     // scanning library
-    walk(musicdir, function(err, results) {
-        if(err) console.log(err);
-        console.log('scanning...'+results+' elements retrieved');
-        res.render('scan',{inserts: results});
-    });
+//    walk(musicdir, function(err, results) {
+//        if(err) console.log(err);
+//        console.log('scanning...'+results+' elements retrieved');
+//        res.render('scan',{inserts: results});
+//    });
 });
 
 // Socket Events
@@ -88,6 +101,15 @@ io.sockets.on('connection', function (socket) {
         });
 
     });
+    
+    socket.on('scan', function (){
+        walk(musicdir, function(err, results) {
+            if(err) console.log(err);
+            console.log('scanning...'+results+' elements retrieved');
+            socket.emit('results', results);
+            //res.render('scan',{inserts: results});
+        });
+    }),
     
     socket.on('search', function (search_req) {
         console.log('Searching for ' + search_req);

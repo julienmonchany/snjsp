@@ -5,9 +5,45 @@
         <div class="grid-100">
             <div class="library">
                 <h2>Library Scan</h2>
-                <p><%= inserts %> elements inserted</p>
+                <button id="scan">Scan</button>
+                <p id="state"></p>
+                <p id="nb_elem_added"></p>
             </div>
         </div>
     </div>
 </div>
-<% include footer.html %>
+
+</section>
+<hr />
+<footer>
+    <div class="grid-container">
+        <div class="grid-100">
+            <p class="paragraph-title">Design : <a href="http://www.appixify.com/KubratTemplate/">Kubrat Template</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="public/js/jquery-1.10.2.min.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect('88.170.240.35:8080');
+
+    // Search request
+    $('#scan').click(function() {
+        $('#state').text('scanning in progress');
+        $('#scan').hide();
+        socket.emit('scan');
+    });
+
+    // displaying number of docs then launch a lib scan
+    socket.on('results', function(data) {
+        $('#state').text('done');
+        $('#scan').show();
+        $("#nb_elem_added").text(data+" elements added");
+    });
+</script>
+<script src='public/js/script.js'></script>
+</body>
+</html>

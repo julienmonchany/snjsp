@@ -18,7 +18,7 @@ MongoDB Configuration
 ------
 Create an index on field "file" in order to avoid duplicates on db scan:
 ```
-db.library.ensureindex({file:1}, {unique: true});
+db.library.ensureIndex({file:1}, {unique: true});
 ```
 
 SNJSP Configuration
