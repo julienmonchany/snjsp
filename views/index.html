@@ -47,7 +47,7 @@
         </div>
     </div>
 </div>
-
+<button id="clear">Clear Playlist</button>
 <div class="colored-stripe white">
     <div class="grid-container">
         <div class="grid-100 grid-parent">
@@ -95,8 +95,8 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    var socket = io.connect('88.170.240.35:8080');
-    //var socket = io.connect('127.0.0.1:8080');
+//    var socket = io.connect('88.170.240.35:8080');
+    var socket = io.connect(location.host);
 
     // lauching a general search on init
     socket.emit('new_user');
