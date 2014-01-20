@@ -28,7 +28,8 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    var socket = io.connect('88.170.240.35:8080');
+    var socket = io.connect('88.170.240.35:8080'); 
+    // var socket = io.connect('127.0.0.1:8080');
 
     // Search request
     $('#scan').click(function() {
@@ -41,7 +42,7 @@
     socket.on('results', function(data) {
         $('#state').text('done');
         $('#scan').show();
-        $("#nb_elem_added").text(data+" elements added");
+        $("#nb_elem_added").text(data + " elements added");
     });
 </script>
 <script src='public/js/script.js'></script>

@@ -8,9 +8,11 @@ var express = require('express'),
     fs = require('fs'),
     path = require('path'),
     id3 = require('id3js'),
+    nb_users = 0,
     
     //Change this value to match ur settings
-    musicdir = "/home/pi/music";
+    musicdir = "/home/jumon/music";
+            
 
 var walk = function(dir, done) {
   var results = 0;
@@ -68,26 +70,16 @@ app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 app.use("/public",express.static(__dirname + "/public"));
 app.use("/home",express.static("/home"));
-//app.use(express.cookieParser());
+app.use(express.cookieParser());
 app.use(express.bodyParser());
 
+// Routes
 app.get('/', function(req, res) {
-    // loading library from db
-    db.library.find().toArray(function(err, docs) {
-       if(err) console.log(err);
-       console.log("Retrieving full library");
-       res.render('index',{library: docs});
-    });
+    res.render('index');
 });
 
-app.get('/scan-db', function(req, res) {
-    res.render('scan');
-    // scanning library
-//    walk(musicdir, function(err, results) {
-//        if(err) console.log(err);
-//        console.log('scanning...'+results+' elements retrieved');
-//        res.render('scan',{inserts: results});
-//    });
+app.get('/admin', function(req, res) {
+    res.render('admin');
 });
 
 // Socket Events
@@ -107,7 +99,6 @@ io.sockets.on('connection', function (socket) {
             if(err) console.log(err);
             console.log('scanning...'+results+' elements retrieved');
             socket.emit('results', results);
-            //res.render('scan',{inserts: results});
         });
     }),
     
@@ -122,9 +113,9 @@ io.sockets.on('connection', function (socket) {
                             {track: {$regex:search_req, $options:'i'}}
                         ]
                 }).limit(100).toArray(function(err, docs) {
-            if(err) console.log(err);
-            console.log(docs.length+" elements filtered");
-            socket.emit('results', docs);
+                    if(err) console.log(err);
+                    console.log(docs.length+" elements filtered");
+                    socket.emit('results', docs);
         });
     });	
 });

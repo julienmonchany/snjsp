@@ -1,12 +1,12 @@
 $(document).ready(function() {
     
 	// add the selected song to the playlist
-        $(document.body).on('click','#library button',function(){
+        $(document.body).on('click','#library .song',function(){
 		myPlaylist.add({
                         // To fix
 			title:$(this).text(),
 			mp3: $(this).attr('value')
-		}, false); // no autoplay when adding
+		}, false);
 	 });
 
 	var myPlaylist = new jPlayerPlaylist({

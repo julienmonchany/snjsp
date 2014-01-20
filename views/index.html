@@ -64,8 +64,11 @@
             <!--Library-->
             <div class="grid-100">
                 <h2>Library</h2>
-                <p class="loading">Loading...</p>
-                <p class="scan_results">Displaying <span id="nb_elem_playlist"></span> elements over <span id="nb_elem_total"></span></p>
+                <div class="loading spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+                <p class="scan_results" style="display:none">Displaying <span id="nb_elem_playlist"></span> elements over <span id="nb_elem_total"></span></p>
                 <!-- to fix : in a table -->
                 <ul class="library" id="library"></ul>
             </div>
@@ -93,6 +96,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io.connect('88.170.240.35:8080');
+    //var socket = io.connect('127.0.0.1:8080');
 
     // lauching a general search on init
     socket.emit('new_user');
@@ -101,6 +105,8 @@
 
     // Search request
     $('#search').click(function() {
+        $('#library').hide();
+        $(".loading").show();
         socket.emit('search', $('#lib_search').val());
     });
 
@@ -118,6 +124,8 @@
             $("#library").append('<li><button class="tag grid-100 tag-belizehole song" value=' + escape(song.file) + '><small>' + song.track_no + '</small> - <strong>' + song.artist + '</strong> <em>' + song.album + '</em> -- ' + song.track + '</li>');
         });
         var filtered_elem = (data.length === 100) ? "+100" : data.length;
+        $('#library').show();
+        $(".loading").hide();
         $('#nb_elem_playlist').text(filtered_elem);
     });
 </script>
